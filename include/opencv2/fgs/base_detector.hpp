@@ -20,7 +20,7 @@ protected:
 public:
 	virtual void Load( const std::string& model_path ) = 0;
 	void SetImage( const cv::Mat img ) { img_ = img; }
-	virtual double ScoreAt( cv::Rect2d box ) = 0;
+	virtual double ScoreAt( cv::Rect box ) = 0;
 	virtual ~fgs_base_detector() {};
 };
 
@@ -41,7 +41,7 @@ public:
 		// Load annotation ( TODO )
 		// ......
 	}
-	virtual double ScoreAt( cv::Rect2d box );
+	virtual double ScoreAt( cv::Rect box );
 	virtual ~fgs_oracle_detector() {};
 };
 
