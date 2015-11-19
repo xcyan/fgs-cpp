@@ -55,9 +55,18 @@ protected:
 	cv::Mat sgp_cov_forward(const GPmodel_dfn &, const double &, const cv::Mat &);
 	cv::Mat sgp_cov_backward(const GPmodel_dfn &, const double &, const cv::Mat &);
 	//	a = sgp_neg_acquisition_ei(GPmodel, psiNp1, PsiN, fN, fN_hat, KN)
-	double sgp_neg_acquisition_ei_forward(const GPmodel_dfn &, const cv::Mat &, const cv::Mat &, const )
+	double sgp_neg_acquisition_ei_forward(const GPmodel_dfn &, const cv::Mat &, const cv::Mat &, const double &, const double &, const cv::Mat &);
+	double sgp_neg_acquisition_ei_backward(const GPmodel_dfn &, const cv::Mat &, const cv::Mat &, const double &, const double &, const cv::Mat &);
+	//	ll = sgp_neglogik(GPmodel, z, Psi1, f)
+	double sgp_neglogik_forward(const GPmodel_dfn &, const double &, const cv::Mat &, const cv::Mat &);
+	double sgp_neglogik_backward(const GPmodel_dfn &, const double &, const cv::Mat &, const cv::Mat &);
+	//	ll = sgp_neglogik_givenC(GPmodel, C, f)
+	double sgp_neglogik_givenC_forward(const GPmodel_dfn &, const cv::Mat &, const cv::Mat &);
+	double sgp_neglogik_givenC_backward(const GPmodel_dfn &, const cv::Mat &, const cv::Mat &);
 
 public:
+	typedef cv2::fgs_gp_box_reg BoxReg;
+
 	void Load( const std::string& model_path );
 	void SetDetector( cv2::fgs_base_detector& );
 	cv::Rect ProposeBox( std::vector< std::pair<cv::Rect,double> > known_boxes );
