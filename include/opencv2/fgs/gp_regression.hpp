@@ -17,7 +17,7 @@ namespace cv2 {
 // argmax z on joint probability of the existing boxes
 // argmax yNp1 on conditional probability
 
-//	kNp1: 1 x N; KN: N x N; psiNp1: 4 x N
+//	kNp1: 1 x N; KN: N x N; psiNp1: 4 x 1
 
 class fgs_gp_box_reg {
 protected:
@@ -26,7 +26,7 @@ protected:
 	 */
  	struct GPmodel_dfn {
 		double m0;
-		cv::Mat diagSqrtLambda;
+		cv::Mat diagSqrtLambda; // 4 x 1
 		double normCov;
 		double noiseSigma2;
 		cv::Mat idxbScaleEnabled;

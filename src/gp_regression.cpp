@@ -12,8 +12,27 @@
 typedef cv2::fgs_gp_box_reg BoxReg;
 /** protected/private functions */
 //	kNp1 = sgp_kNp1( psiNp1, PsiN, GPmodel );
-cv::Mat BoxReg::sgp_kNp1_forward(const cv::Mat &, const cv::Mat &, const GPmodel_dfn &);
-cv::Mat BoxReg::sgp_kNp1_backward(const cv::Mat &, const cv::Mat &, const GPmodel_dfn &);
+// n = size(PsiN, 2)
+// eta = GPmodel.normCov
+// D = PsiN - repmat(psiNp1, 1, n);
+// Ds = bsxfun(@times, D, vec(GPmodel.diagSqrtLambda));
+// kNp1 = eta * exp(-0.5 * sum(Ds.*Ds, 1))';
+
+cv::Mat BoxReg::sgp_kNp1_forward(const cv::Mat & psiNp1, const cv::Mat & PsiN, const GPmodel_dfn & GPmodel) {
+	// psiNp1: 4 x 1; PsiN: 4 x N
+	int n = PsiNp.cols;
+	double eta = GPmodel.normCov;
+	cv::Mat D = PsiN - cv::repeat(psiNp1, 1, n);
+	// D: 4 x N
+	cv::Mat Ds = cv::dot(D, cv::repeat(GPmodel.diagSqrtLambda));
+	cv::Mat kNp1 = eta
+	return cv::Mat();
+}
+
+cv::Mat BoxReg::sgp_kNp1_backward(const cv::Mat & psiNp1, const cv::Mat & PsiN, const GPmodel_dfn & GPmodel) {
+
+	return cv::Mat();
+}
 
 //	mu   = sgp_posterior_mu( kNp1, KN, fN, GPmodel );
 double BoxReg::sgp_posterior_mu_forward(const cv::Mat &, const cv::Mat &, const double &, const GPmodel_dfn &);
