@@ -34,7 +34,7 @@ protected:
 		double noiseSigma2;
 		cv::Mat idxbScaleEnabled; // 4 x 1
 	} GPmodel_;
-	cv2::fgs_base_detector& detector_;
+	//cv2::fgs_base_detector& detector_;
 
 	/**
 	 * private/protected functions
@@ -74,7 +74,7 @@ public:
 	typedef cv2::fgs_gp_box_reg BoxReg;
 
 	void Load( const std::string& model_path );
-	void SetDetector( cv2::fgs_base_detector& );
+	//void SetDetector( cv2::fgs_base_detector& );
 	cv::Rect ProposeBox( std::vector< std::pair<cv::Rect,double> > known_boxes );
 	// function for generate new proposals
 	// input: current existing boxes:  std::vector< cv::Rect2d >

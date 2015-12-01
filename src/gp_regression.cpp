@@ -337,11 +337,11 @@ void BoxReg::Load( const std::string & model_path ) {
 	double dsl[4];
 	int ise[4];
 
-	fscanf(fin, "%f\n", m0);
-	fscanf(fin, "%f %f %f %f\n", dsl[0], dsl[1], dsl[2], dsl[3]);
-	fscanf(fin, "%f\n", nc);
-	fscanf(fin, "%f\n", ns2);
-	fscanf(fin, "%d %d %d %d\n", ise[0], ise[1], ise[2], ise[3]);
+	fscanf(fin, "%f\n", &m0);
+	fscanf(fin, "%f %f %f %f\n", &dsl[0], &dsl[1], &dsl[2], &dsl[3]);
+	fscanf(fin, "%f\n", &nc);
+	fscanf(fin, "%f\n", &ns2);
+	fscanf(fin, "%d %d %d %d\n", &ise[0], &ise[1], &ise[2], &ise[3]);
 
 	fclose(fin);
 
@@ -357,10 +357,10 @@ void BoxReg::Load( const std::string & model_path ) {
 	return;
 }
 
-void BoxReg::SetDetector(cv2::fgs_base_detector & detector_) {
-
-  return;
-}
+//void BoxReg::SetDetector(cv2::fgs_base_detector & detector_) {
+//
+//  return;
+//}
 
 cv::Rect BoxReg::ProposeBox(std::vector< std::pair<cv::Rect, double> > known_boxes) {
 	cv::Mat PsiN1; // 4 x N
